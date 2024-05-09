@@ -3,6 +3,7 @@ This reconciliation project captures all discrepanices within two large customer
 
 ## Description
 This process was created to simplify and accelerate the data clean up between large customer datasets and allows an analyst to run clean ups on a frequent basis. This script was created in R language and produces reports of data in csv that can be used to housekeep the two systems. 
+Please note that the datasets found in the data folder are randomized data and that there are only 30 rows, however the original clean up was done with over 200,000 rows. This script is meant to handle large datasets.
 
 ## Getting Started
 ### Dependencies
