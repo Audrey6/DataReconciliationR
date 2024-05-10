@@ -18,6 +18,7 @@ Please note that the datasets found in the data folder are randomized generated 
 * Results will be produced into a new file within designated path (12 files)
   
 ## Datasets
+For this example project, let's take datasets from two systems called Franklin and SeeLoad.
 Columns found within both datasets:
 *Use dataset2 as the source of truth along with the most accurate ID for comparison, DRUID/UUID*
 
@@ -33,4 +34,9 @@ Below are the flags the script will produce in the results folder as csv files. 
 * Flag F: Missing in Dataset 1
 * Flag G: Missing in Dataset 2
 * Flag H: Complete Match (No Action)
+
+## Results
+Please check out the results folder for all flag files and analysis documentation. Here's a summary run down of the data ran in the code:
+
+![image](https://github.com/Audrey6/DataReconciliationR/assets/34180394/49145779-60b8-4c79-a776-0c458d1b6300)
 
