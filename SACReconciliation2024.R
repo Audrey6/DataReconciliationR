@@ -88,10 +88,10 @@ dataset2 <- dataset2 %>%
 # Loaded dataset1 table and added dataset2 table to bottom
 TestDF <- dataset1 %>%
   mutate(dataSource = "dataset1") %>%
-  select(DRUID, SPID, AccountID, SAID, SerialNumber, EnrollmentStatus, DeviceInstallDate, DeviceType, MACAddress, PremiseZip, dataSource) %>%
+  select(DRUID, SPID, AccountID, SAID, SerialNumber, EnrollmentStatus, DeviceInstallDate, DeviceType, PremiseZip, dataSource) %>%
   bind_rows(dataset2 %>% 
               mutate(dataSource = "dataset2") %>%
-              select(DRUID, SPID, AccountID, SAID, SerialNumber, EnrollmentStatus, DeviceInstallDate, DeviceType, MacAddress, zip, dataSource))
+              select(DRUID, SPID, AccountID, SAID, SerialNumber, EnrollmentStatus, DeviceInstallDate, DeviceType, zip, dataSource))
 
 # Converts install date to date format, groups by enrollment status and sort
 TestDF %>%
@@ -220,7 +220,7 @@ DRUIDdataset2Notdataset1 <- DRUIDMatch %>%
   filter(!DRUID %in% DRUIDSeparation$DRUID) %>%
   select(DRUID, SeeLoadSAID, FranklinSAID, SeeLoadSPID, FranklinSPID, SeeLoadAccID, FranklinAccID)
 
-DRUIDSeeLoadNotFranklin %>%
+DRUIDdataset2Notdataset1 %>%
   write_csv(file = paste0("./Results/", "SeeLoadDRUIDs", " ", Sys.Date(), ".csv")) 
 
        
@@ -242,7 +242,7 @@ mutate(SourceMatch = ifelse(SeeloadSource == FranklinSource, yes = TRUE, no = "I
   
 select(DRUID, SeeLoadSAID, FranklinSAID, SeeLoadSPID, FranklinSPID, SeeLoadAccID, FranklinAccID)
 
-DRUIDdataset1Notdataset2 %>%
+DRUIDdataset2Notdataset1 %>%
   write_csv(file = paste0("./Results/", "FranklinDRUIDs", " ", Sys.Date(), ".csv")) 
 
 
@@ -293,7 +293,7 @@ SPIDSeeLoadNotFranklin %>%
   write_csv(file = paste0("./Results/", "SeeLoadSPIDs", " ", Sys.Date(), ".csv")) 
 
 #SPID is in dataset1 but does not match or exist in dataset2
-SPIDFranklinNotSeeLoad <- dataset1 %>%
+SPIDdataset2Notdataset1 <- dataset1 %>%
   filter(!SPID %in% MatchingUniqueID$SPID) %>%
   filter(!SPID %in% SPIDMatch$SPID) %>%
   mutate(dataSource = "dataset1") %>%
@@ -305,7 +305,7 @@ SPIDFranklinNotSeeLoad <- dataset1 %>%
   
 select(SPID, SeeLoadSAID, FranklinSAID, SeeLoadDRUID, FranklinDRUID, SeeLoadAccID, FranklinAccID)
 
-SPIDFranklinNotSeeLoad %>%
+SPIDdataset2Notdataset1 %>%
   write_csv(file = paste0("./Results/", "FranklinSPIDs", " ", Sys.Date(), ".csv")) 
 
 
@@ -380,6 +380,11 @@ dataset2AddressCleanUp <- dataset2 %>%
 # Saves dataset2 address clean up file as csv into results folder
 dataset2AddressCleanUp %>%
   write_csv(file = paste0("./Results/", "SeeloadAddressCleanUp", " ", Sys.Date(), ".csv"))
+
+
+
+
+
 
 
 
