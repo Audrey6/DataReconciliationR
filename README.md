@@ -36,7 +36,7 @@ Below are the flags the script will produce in the results folder as csv files. 
 * Flag H: Complete Match (No Action)
 
 ## Results
-Please check out the results folder for all flag files and analysis documentation. Here's a summary run down of the data ran in the code:
+Please check out the results folder as well as the Summary documentation for all flag files and general analysis. In addition here's a summary run down of the data ran in the code:
 
 ![image](https://github.com/Audrey6/DataReconciliationR/assets/34180394/49145779-60b8-4c79-a776-0c458d1b6300)
 
